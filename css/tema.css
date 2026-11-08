@@ -1,0 +1,52 @@
+/* Generado por montar.py desde el kit de marca. No editar: cambiar el kit y volver a montar. */
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/lato-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/lato-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/lato-700.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("../fonts/lato-900.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --principal: #5b2b82;
+  --principal-900: #321848;
+  --principal-700: #492268;
+  --principal-300: #ad95c0;
+  --principal-100: #ebe6f0;
+  --principal-50: #f5f2f8;
+  --secundario: #7a4bb5;
+  --secundario-900: #432964;
+  --secundario-700: #623c91;
+  --secundario-300: #bca5da;
+  --secundario-100: #efe9f6;
+  --secundario-50: #f7f4fb;
+  --terciario: #3c1d4f;
+  --terciario-900: #21102b;
+  --terciario-700: #30173f;
+  --terciario-300: #9e8ea7;
+  --terciario-100: #e8e4ea;
+  --terciario-50: #f3f1f4;
+  --tinta: #2a1e33;
+  --crema: #faf6f2;
+  --fuente: "Lato", system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}

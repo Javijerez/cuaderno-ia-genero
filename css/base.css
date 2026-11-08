@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Base: fuentes, tokens de diseño, reset y elementos comunes
+   ========================================================================== */
+
+/* Las tipografías y los colores de marca los pone css/tema.css, que genera
+   montar.py a partir del kit de marca del cliente y se carga después de este
+   archivo. Aquí solo hay valores de respaldo neutros. */
+
+:root {
+  color-scheme: light;
+
+  /* Color principal de la marca */
+  --principal-900: #14304f;
+  --principal-700: #1d4a78;
+  --principal: #2b62a0;
+  --principal-300: #9db8d9;
+  --principal-100: #e3ecf6;
+  --principal-50: #f3f7fb;
+
+  /* Color secundario de la marca */
+  --secundario-900: #0f4440;
+  --secundario-700: #17645e;
+  --secundario: #1f8078;
+  --secundario-300: #93cbc5;
+  --secundario-100: #e0f1ef;
+  --secundario-50: #f2f9f8;
+
+  /* Color de acento de la marca (logotipo, avisos de marca) */
+  --terciario-900: #6b1a12;
+  --terciario-700: #a3301f;
+  --terciario: #c8452a;
+  --terciario-100: #f8e0da;
+  --terciario-50: #fcf2ef;
+
+  /* Estados (no dependen de la marca) */
+  --exito: #2f7d32;
+  --exito-700: #22602a;
+  --error: #c62828;
+  --error-700: #a11c1c;
+
+  /* Ejemplo (siempre ámbar) */
+  --ejemplo-fondo: #fdf4dc;
+  --ejemplo-borde: #e9b949;
+  --ejemplo-etiqueta: #f5c451;
+  --ejemplo-tinta: #4a3000;
+
+  /* Ejercicio (siempre azul tinta) */
+  --ejercicio: #22507f;
+  --ejercicio-fondo: #eaf1f9;
+  --ejercicio-borde: #6f97c6;
+  --ejercicio-campo: #c3d3e6;
+
+  /* Neutros */
+  --crema: #fbf7f0;
+  --papel: #ffffff;
+  --tinta: #26202e;
+  --tinta-suave: #5a5263;
+  --linea: #e7dfd3;
+  --linea-suave: #f1ebe2;
+
+  /* Acento de la pantalla actual (lo cambia data-acento) */
+  --acento: var(--principal);
+  --acento-fuerte: var(--principal-900);
+  --acento-suave: var(--principal-100);
+  --acento-muy-suave: var(--principal-50);
+
+  --fuente: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radio: 18px;
+  --radio-s: 10px;
+  --sombra: 0 1px 2px rgb(38 32 46 / 0.05), 0 10px 30px rgb(38 32 46 / 0.08);
+  --sombra-alta: 0 20px 60px rgb(38 32 46 / 0.25);
+}
+
+[data-acento="principal"] {
+  --acento: var(--principal);
+  --acento-fuerte: var(--principal-900);
+  --acento-suave: var(--principal-100);
+  --acento-muy-suave: var(--principal-50);
+}
+[data-acento="terciario"] {
+  --acento: var(--terciario);
+  --acento-fuerte: var(--terciario-900);
+  --acento-suave: var(--terciario-100);
+  --acento-muy-suave: var(--terciario-50);
+}
+[data-acento="secundario"] {
+  --acento: var(--secundario);
+  --acento-fuerte: var(--secundario-900);
+  --acento-suave: var(--secundario-100);
+  --acento-muy-suave: var(--secundario-50);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--fuente);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--tinta);
+  background: var(--crema);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+img { height: auto; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--acento); text-underline-offset: 0.15em; }
+
+:focus-visible {
+  outline: 3px solid var(--principal);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+[tabindex="-1"]:focus { outline: none; }
+[hidden] { display: none !important; }
+
+.visualmente-oculto {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.saltar {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: var(--principal-900);
+  color: #fff;
+  font-weight: 800;
+  border-radius: var(--radio-s);
+  text-decoration: none;
+}
+.saltar:focus { top: 1rem; }
+
+.icono {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.t-principal { color: var(--principal); }
+.t-secundario { color: var(--secundario); }
+
+/* --- Botones ------------------------------------------------------------ */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0.55em 1.15em;
+  border: 2px solid var(--linea);
+  border-radius: 999px;
+  background: var(--papel);
+  color: var(--tinta);
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+}
+.boton:hover:not(:disabled) { border-color: var(--acento); color: var(--acento-fuerte); }
+.boton:active:not(:disabled) { transform: translateY(1px); }
+.boton:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.boton--primario {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+.boton--primario:hover:not(:disabled) {
+  background: var(--acento-fuerte);
+  border-color: var(--acento-fuerte);
+  color: #fff;
+}
+
+.boton--peligro { color: var(--error-700); }
+.boton--peligro:hover:not(:disabled) { border-color: var(--error); color: var(--error-700); background: #fdeeee; }
+
+.boton--pequeno { min-height: 36px; padding: 0.35em 0.85em; font-size: 0.9rem; }
+
+.boton-icono {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta-suave);
+}
+.boton-icono:hover { background: var(--linea-suave); color: var(--tinta); }
+
+.sin-js {
+  margin: 2rem;
+  padding: 1rem;
+  background: #fff;
+  border: 2px solid var(--error);
+  border-radius: var(--radio-s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

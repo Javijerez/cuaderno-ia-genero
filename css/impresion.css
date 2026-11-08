@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Impresión: pantalla actual o dossier «Mi proyecto»
+   ========================================================================== */
+
+.impresion { display: none; }
+
+/* --- El dossier ----------------------------------------------------------
+   Estos estilos van FUERA de @media print a propósito: `js/mi-proyecto.js`
+   necesita medir el alto real de cada trozo antes de imprimir, y para eso
+   renderiza el dossier fuera de pantalla con estas mismas reglas.
+
+   El dossier se pagina a mano, repartiendo el contenido en «hojas», y cada
+   hoja lleva su propia copia de la cabecera con los logos. Es la única forma
+   de que salgan en todas las páginas en cualquier navegador: Safari (WebKit)
+   no repite `<thead>` al paginar, y `position: fixed` cae en el margen de
+   página, donde Chrome lo recorta. Las dos cosas ya se probaron y fallaron.
+   -------------------------------------------------------------------------- */
+
+.impresion {
+  --hoja-ancho: 180mm;    /* A4 (210mm) menos los márgenes de @page (15mm x 2) */
+  --hoja-alto: 258mm;     /* A4 (297mm) menos márgenes (16mm x 2), con holgura */
+}
+
+/* Modo medición: visible para el motor de maquetación, invisible para la vista.
+   Se mide en un bloque normal, sin flex ni recorte, para que cada trozo tenga
+   su alto natural. */
+.impresion--midiendo {
+  display: block;
+  position: absolute;
+  left: -99999px;
+  top: 0;
+  width: var(--hoja-ancho);
+  font-size: 11pt;
+}
+.dossier__regla { width: var(--hoja-ancho); }
+.dossier__sonda { height: var(--hoja-alto); }
+
+.dossier__hoja {
+  display: flex;
+  flex-direction: column;
+  width: var(--hoja-ancho);
+  height: var(--hoja-alto);
+  overflow: hidden;
+}
+.dossier__hoja + .dossier__hoja { break-before: page; page-break-before: always; }
+.dossier__cuerpo { flex: 1 1 auto; min-height: 0; }
+
+.dossier__marca {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-bottom: 6pt;
+  margin-bottom: 12pt;
+  border-bottom: 2pt solid var(--principal);
+}
+/* La cabecera no depende de flex ni hereda el subrayado del enlace: así sale
+   igual en cualquier motor de impresión. */
+.dossier__marca .logo-marca { text-decoration: none; }
+.dossier__marca .logo-marca__nombre { display: block; font-size: 12pt; }
+.dossier__marca .logo-marca__nombre small { display: block; }
+.dossier__marca .patrocinio__rotulo { font-size: 7pt; }
+.dossier__marca .logo-marca img { width: 26px; height: 26px; }
+.dossier__marca .logo-imagen { height: 17px; }
+
+.dossier__pie {
+  margin-top: 8pt;
+  padding-top: 5pt;
+  border-top: 1pt solid #ddd;
+  font-size: 7.5pt;
+  line-height: 1.35;
+  color: var(--tinta-suave);
+}
+
+.dossier__portada { margin-bottom: 16pt; }
+.dossier__titulo { margin: 0 0 3pt; font-size: 21pt; font-weight: 900; color: var(--principal-900); line-height: 1.15; }
+.dossier__subtitulo { margin: 0 0 12pt; font-size: 10pt; color: var(--tinta-suave); }
+
+.dossier__datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2pt 10pt;
+  margin: 0;
+  padding: 9pt 11pt;
+  border: 1pt solid #ddd;
+  border-radius: 6pt;
+  background: var(--principal-50);
+}
+.dossier__datos dt { font-weight: 800; color: var(--principal-900); }
+.dossier__datos dd { margin: 0; }
+
+/* Texto oscuro sobre fondo claro, nunca blanco sobre el color de marca: si el navegador
+   imprime sin fondos (lo habitual por defecto), el rótulo seguiría leyéndose. */
+.dossier__bloque {
+  margin: 16pt 0 8pt;
+  padding: 3pt 8pt;
+  border-left: 3pt solid var(--principal);
+  border-radius: 0 4pt 4pt 0;
+  background: var(--principal-100);
+  color: var(--principal-900);
+  font-size: 9pt;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.dossier__hoja .dossier__bloque:first-child,
+.dossier__hoja .dossier__pantalla:first-child { margin-top: 0; }
+
+.dossier__pantalla {
+  margin: 12pt 0 6pt;
+  padding-bottom: 3pt;
+  border-bottom: 1pt solid var(--principal-300);
+  font-size: 13pt;
+  font-weight: 900;
+  color: var(--principal-900);
+}
+.dossier__campo { margin: 0 0 9pt; }
+.dossier__pregunta { margin: 0 0 3pt; font-weight: 800; }
+.dossier__respuesta {
+  margin: 0;
+  padding: 6pt 8pt;
+  min-height: 2.2em;
+  border: 1pt solid #ccc;
+  border-radius: 4pt;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.dossier__respuesta--vacia {
+  border-style: dashed;
+  color: var(--tinta-suave);
+  font-style: italic;
+}
+
+@media print {
+  @page { size: A4; margin: 16mm 15mm; }
+
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    font-size: 11pt;
+  }
+  .saltar, .recuadro__barra, .recuadro__pie, .temporizador, dialog { display: none !important; }
+
+  /* Imprimir la pantalla actual */
+  .marca { border-bottom: 1px solid #ccc; }
+  .escenario { padding: 0 !important; }
+  .recuadro { height: auto !important; border: 0; box-shadow: none; overflow: visible; }
+  .recuadro::before { display: none; }
+  .pantalla { overflow: visible !important; }
+  .pantalla > * { animation: none !important; }
+  .ejemplo, .ejercicio { break-inside: avoid; }
+  .campo__area { min-height: 0; border-width: 1px; }
+
+  /* Imprimir el dossier: solo se muestra #impresion */
+  body.imprimiendo-dossier > *:not(.impresion) { display: none !important; }
+  body.imprimiendo-dossier .impresion { display: block; }
+
+  /* Que los fondos claros salgan también sin marcar «Gráficos de fondo». */
+  .dossier__bloque, .dossier__datos { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Al imprimir, cada hoja ocupa su página; el alto lo fija el salto, no el box. */
+  .dossier__hoja { height: auto; min-height: 0; overflow: visible; }
+}
