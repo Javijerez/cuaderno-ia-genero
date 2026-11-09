@@ -152,6 +152,123 @@ export const b_inicio = [
     ],
   },
   {
+    id: 'aula-d0',
+    titulo: 'En el aula · D0: ¿Desde dónde partimos con la IA?', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D0 · Gran grupo · 09:00 · Diapositiva 3</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Sitúate del 0 al 10 y responde en voz alta a tres preguntas.', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'compactas',
+        items: [
+          {
+            texto: '<strong>0</strong> · No la he usado nunca', // PROVISIONAL
+          },
+          {
+            texto: '<strong>5</strong> · La uso a veces, sin método', // PROVISIONAL
+          },
+          {
+            texto: '<strong>10</strong> · Es parte de mi trabajo diario', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '<strong>¿Quién soy?</strong> Mi nombre y mi área en Prodiversa', // PROVISIONAL
+          },
+          {
+            texto: '<strong>¿En qué me ayudaría?</strong> Una tarea de mi puesto que me gustaría hacer con IA', // PROVISIONAL
+          },
+          {
+            texto: '<strong>¿Qué me preocupa?</strong> Una palabra sobre lo que me inquieta de la IA', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d0-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>¿Desde dónde partimos con la IA?</p>',
+        campos: [
+          {
+            tipo: 'opciones',
+            id: 'aula-d0-escala',
+            etiqueta: 'Del 0 al 10, ¿desde dónde parto con la IA?', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: '0',
+              },
+              {
+                letra: 'B',
+                texto: '1',
+              },
+              {
+                letra: 'C',
+                texto: '2',
+              },
+              {
+                letra: 'D',
+                texto: '3',
+              },
+              {
+                letra: 'E',
+                texto: '4',
+              },
+              {
+                letra: 'F',
+                texto: '5',
+              },
+              {
+                letra: 'G',
+                texto: '6',
+              },
+              {
+                letra: 'H',
+                texto: '7',
+              },
+              {
+                letra: 'I',
+                texto: '8',
+              },
+              {
+                letra: 'J',
+                texto: '9',
+              },
+              {
+                letra: 'K',
+                texto: '10',
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d0-ayudaria',
+            etiqueta: '¿En qué me ayudaría? Una tarea de mi puesto que me gustaría hacer con IA', // PROVISIONAL
+            filas: 2,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d0-preocupa',
+            etiqueta: '¿Qué me preocupa? Una palabra sobre lo que me inquieta de la IA', // PROVISIONAL
+            filas: 1,
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: 'programa',
     titulo: 'Programa de la jornada',
     icono: 'reloj',

@@ -36,6 +36,85 @@ export const b_u1 = [
     ],
   },
   {
+    id: 'aula-d1',
+    titulo: 'En el aula · D1: La misma pregunta, dos respuestas', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D1 · Parejas · 09:20 · Diapositiva 10</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'ejemplo',
+        titulo: 'Ejemplo · Acción social',
+        html: '<p>«¿Qué ayudas hay en Málaga para una familia con riesgo de perder su vivienda?»</p>',
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'numeradas',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Abrid dos herramientas distintas.', // PROVISIONAL
+          },
+          {
+            texto: 'Haced la pregunta de vuestro ámbito (banco de casos) en las dos.', // PROVISIONAL
+          },
+          {
+            texto: 'Comparad las respuestas: ¿qué es real?, ¿qué se ha inventado?, ¿qué está desactualizado?, ¿qué falta?', // PROVISIONAL
+          },
+          {
+            texto: 'Puesta en común: una «alucinación» y un dato que habría que verificar.', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d1-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>La misma pregunta, dos respuestas</p>',
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d1-pregunta',
+            etiqueta: 'La pregunta que hemos hecho', // PROVISIONAL
+            filas: 2,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d1-herr1',
+            etiqueta: 'Lo que dice la primera herramienta', // PROVISIONAL
+            filas: 4,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d1-herr2',
+            etiqueta: 'Lo que dice la segunda herramienta', // PROVISIONAL
+            filas: 4,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d1-alucinacion',
+            etiqueta: 'Una «alucinación»', // PROVISIONAL
+            filas: 2,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d1-verificar',
+            etiqueta: 'Un dato que habría que verificar', // PROVISIONAL
+            filas: 2,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u1/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

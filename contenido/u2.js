@@ -33,6 +33,106 @@ export const b_u2 = [
     ],
   },
   {
+    id: 'aula-d2',
+    titulo: 'En el aula · D2: Tu primer prompt profesional', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D2 · Parejas del mismo perfil · 10:00 · Diapositiva 15</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Elige una tarea de tu puesto, escribe el prompt pobre, aplícale R-C-T-F-L y mejora el resultado en dos vueltas.', // PROVISIONAL
+      },
+      {
+        tipo: 'tabla-datos',
+        ancha: true,
+        columnas: [
+          'Perfil',
+          'Tarea para elegir', // PROVISIONAL
+        ],
+        filas: [
+          [
+            'Inserción sociolaboral',
+            'Oferta de empleo inclusiva para difundir en el itinerario', // PROVISIONAL
+          ],
+          [
+            'Atención social',
+            'Mensaje de WhatsApp para recordar una cita a una familia', // PROVISIONAL
+          ],
+          [
+            'Centros de menores', // PROVISIONAL
+            'Normas de convivencia explicadas a niñas y niños de 8–11 años',
+          ],
+          [
+            'Coordinación y gestión', // PROVISIONAL
+            'Correo a una empresa colaboradora para proponer prácticas', // PROVISIONAL
+          ],
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d2-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Tu primer prompt profesional</p>',
+        campos: [
+          {
+            tipo: 'opciones',
+            id: 'aula-d2-tarea',
+            etiqueta: 'La tarea que hemos elegido', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: 'Oferta de empleo inclusiva para difundir en el itinerario', // PROVISIONAL
+              },
+              {
+                letra: 'B',
+                texto: 'Mensaje de WhatsApp para recordar una cita a una familia', // PROVISIONAL
+              },
+              {
+                letra: 'C',
+                texto: 'Normas de convivencia explicadas a niñas y niños de 8–11 años',
+              },
+              {
+                letra: 'D',
+                texto: 'Correo a una empresa colaboradora para proponer prácticas', // PROVISIONAL
+              },
+              {
+                letra: 'E',
+                texto: 'Otra tarea de mi puesto', // PROVISIONAL
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d2-pobre',
+            etiqueta: 'El prompt pobre',
+            filas: 2,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d2-rctfl',
+            etiqueta: 'El prompt con R-C-T-F-L', // PROVISIONAL
+            filas: 7,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d2-vueltas',
+            etiqueta: 'Lo que he pedido en las dos vueltas de mejora', // PROVISIONAL
+            filas: 3,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u2/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

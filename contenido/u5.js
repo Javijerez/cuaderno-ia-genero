@@ -33,6 +33,164 @@ export const b_u5 = [
     ],
   },
   {
+    id: 'aula-d6',
+    titulo: 'En el aula · D6: El CV que cuenta toda la historia', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D6 · Parejas · 13:30 · Diapositiva 33</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'ejemplo',
+        titulo: 'Caso ficticio',
+        html: '<p>Rosa, 45 años. Diez años cuidando de sus hijos y de su madre. Antes, cinco años en hostelería. Arregla todo en casa y quiere trabajar en mantenimiento de edificios.</p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'numeradas',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Pedid a la IA un CV para Rosa sin indicaciones. ¿Qué hace con los diez años? ¿Hacia qué sector la orienta?', // PROVISIONAL
+          },
+          {
+            texto: 'Repetid con R-C-T-F-L, la cláusula de igualdad y: «reconoce como experiencia el trabajo de cuidados, aunque no haya sido remunerado, y tradúcelo en competencias para el puesto».', // PROVISIONAL
+          },
+          {
+            texto: 'Comparad las dos versiones con las cinco claves y quedaos con la mejor.', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d6-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>El CV que cuenta toda la historia</p>',
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d6-sin',
+            etiqueta: 'El CV de Rosa sin indicaciones: ¿qué hace con los diez años? ¿Hacia qué sector la orienta?', // PROVISIONAL
+            filas: 5,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d6-con',
+            etiqueta: 'El CV de Rosa con R-C-T-F-L y la cláusula de igualdad', // PROVISIONAL
+            filas: 6,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d6-mejor',
+            etiqueta: 'Con las cinco claves, nos quedamos con…', // PROVISIONAL
+            filas: 3,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u5/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
+    id: 'aula-d7',
+    titulo: 'En el aula · D7: La entrevista ensayada', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D7 · Tríos · 14:20 · Diapositiva 36</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '<strong>Candidata:</strong> Hace de Rosa y responde en voz alta', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Entrevista:</strong> Maneja la IA con el prompt de entrevista', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Observación:</strong> Observa y anota lo que funciona y los sesgos', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'numeradas',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Ronda 1: entrevista con la IA (cinco preguntas).', // PROVISIONAL
+          },
+          {
+            texto: 'Ronda 2: quien entrevista introduce una pregunta discriminatoria y Rosa ensaya su respuesta.', // PROVISIONAL
+          },
+          {
+            texto: 'Cierre: ¿la retroalimentación de la IA es útil y justa?', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d7-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>La entrevista ensayada</p>',
+        campos: [
+          {
+            tipo: 'opciones',
+            id: 'aula-d7-papel',
+            etiqueta: 'Mi papel en el trío', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: 'Candidata',
+              },
+              {
+                letra: 'B',
+                texto: 'Entrevista',
+              },
+              {
+                letra: 'C',
+                texto: 'Observación', // PROVISIONAL
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d7-notas',
+            etiqueta: 'Lo que funciona y los sesgos que he visto', // PROVISIONAL
+            filas: 4,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d7-pregunta',
+            etiqueta: 'La pregunta discriminatoria y la respuesta ensayada', // PROVISIONAL
+            filas: 3,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d7-justa',
+            etiqueta: '¿La retroalimentación de la IA es útil y justa?', // PROVISIONAL
+            filas: 2,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u5/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

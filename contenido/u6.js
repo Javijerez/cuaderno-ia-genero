@@ -33,6 +33,218 @@ export const b_u6 = [
     ],
   },
   {
+    id: 'aula-e1',
+    titulo: 'En el aula · E1: ¿Persona o máquina?', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>E1 · De pie · 16:00 · Diapositiva 38</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '<strong>Izquierda:</strong> Si crees que el texto lo ha escrito una persona', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Derecha:</strong> Si crees que lo ha escrito la IA', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Y después:</strong> ¿En cuáles había un estereotipo?', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-e1-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>¿Persona o máquina?</p>',
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-e1-estereotipos',
+            etiqueta: '¿En cuáles había un estereotipo?', // PROVISIONAL
+            filas: 3,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'aula-d8',
+    titulo: 'En el aula · D8: Una actividad, dos edades', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D8 · Grupos de 3 · 16:00 · Diapositiva 40</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'ejemplo',
+        titulo: 'Fragmento del prompt', // PROVISIONAL
+        html: '<p>«…para un centro de protección. No pidas hablar de la familia ni de recuerdos personales. Incluye referentes de mujeres en ciencia y oficios y de hombres en cuidados. Que todas y todos puedan elegir cualquier rol.»</p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'numeradas',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Pedid a la IA una dinámica sobre profesiones para niñas y niños de 8 a 11 años, sin más indicaciones.', // PROVISIONAL
+          },
+          {
+            texto: 'Pasadla por los cinco filtros. ¿Qué profesiones asocia a cada sexo? ¿Da por hecho una familia?', // PROVISIONAL
+          },
+          {
+            texto: 'Reescribid el prompt con los filtros y la cláusula de igualdad.', // PROVISIONAL
+          },
+          {
+            texto: 'Adaptadla a adolescentes de 14 a 17 años que preparan su vida adulta.', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d8-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Una actividad, dos edades</p>',
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d8-inicial',
+            etiqueta: 'La dinámica que propone la IA sin más indicaciones', // PROVISIONAL
+            filas: 4,
+          },
+          {
+            tipo: 'opciones-multiples',
+            id: 'aula-d8-filtros',
+            etiqueta: 'Filtros que falla', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: 'Edad y momento evolutivo',
+              },
+              {
+                letra: 'B',
+                texto: 'Coeducación',
+              },
+              {
+                letra: 'C',
+                texto: 'Historia de vida',
+              },
+              {
+                letra: 'D',
+                texto: 'Diversidad',
+              },
+              {
+                letra: 'E',
+                texto: 'Participación',
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d8-prompt',
+            etiqueta: 'Nuestro prompt reescrito', // PROVISIONAL
+            filas: 6,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d8-1417',
+            etiqueta: 'La versión para 14–17 años', // PROVISIONAL
+            filas: 4,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u6/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
+    id: 'aula-d9',
+    titulo: 'En el aula · D9: Emociones sin mandatos', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D9 · Grupos de 3 · 16:00 · Diapositiva 43</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '<strong>Un cuento:</strong> Un chico que aprende a pedir ayuda cuando está triste (8–11 años)', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Tarjetas:</strong> Diez situaciones para nombrar emociones, con protagonistas diversos', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Un role-play:</strong> Detectar el control en una pareja adolescente por el móvil (14–17)', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d9-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Emociones sin mandatos</p>',
+        campos: [
+          {
+            tipo: 'opciones',
+            id: 'aula-d9-recurso',
+            etiqueta: 'El recurso que hemos elegido', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: 'Un cuento',
+              },
+              {
+                letra: 'B',
+                texto: 'Tarjetas',
+              },
+              {
+                letra: 'C',
+                texto: 'Un role-play',
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d9-texto',
+            etiqueta: 'Nuestro recurso', // PROVISIONAL
+            filas: 7,
+          },
+        ],
+      },
+      {
+        tipo: 'checklist',
+        id: 'aula-d9-revision',
+        etiqueta: 'Revisión antes de usarlo', // PROVISIONAL
+        items: [
+          '¿Rompe algún mandato de género?',
+          '¿Es seguro para su historia de vida?',
+          '¿El lenguaje es adecuado a la edad?',
+          '¿Lo usaría yo mañana en el centro?', // PROVISIONAL
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u6/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

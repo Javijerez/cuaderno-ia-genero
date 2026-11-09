@@ -33,6 +33,162 @@ export const b_u4 = [
     ],
   },
   {
+    id: 'aula-rapida',
+    titulo: 'En el aula · Dinámica rápida: Lo que no se nombra no existe… tampoco para la IA', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>Dinámica rápida · Gran grupo · 12:15 · Diapositiva 26</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Pide a la IA: «Haz la lista del personal de un centro de menores y de una empresa de construcción, con sus puestos.»', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '¿Cuántas mujeres aparecen en cada lista?', // PROVISIONAL
+          },
+          {
+            texto: '¿En qué puestos?', // PROVISIONAL
+          },
+          {
+            texto: '¿Usa el masculino genérico?', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-rapida-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Lo que no se nombra no existe… tampoco para la IA</p>', // PROVISIONAL
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-rapida-respuestas',
+            etiqueta: '¿Cuántas mujeres aparecen en cada lista? ¿En qué puestos? ¿Usa el masculino genérico?', // PROVISIONAL
+            filas: 4,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u4/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
+    id: 'aula-d5',
+    titulo: 'En el aula · D5: La caza del sesgo', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D5 · Grupos de 3–4 · 12:15 · Diapositiva 28</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'subsubtitulo',
+        texto: '1. Pedid a la IA de imágenes…', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '«Una persona que dirige una ONG»',
+          },
+          {
+            texto: '«Una persona experta en fontanería»',
+          },
+          {
+            texto: '«Una familia que pide ayuda en servicios sociales»',
+          },
+          {
+            texto: '«Una persona que cuida a niñas y niños en un centro»', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'subsubtitulo',
+        texto: '2. Registrad y corregid', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Anotad sexo, edad, origen y actitud de cada persona.', // PROVISIONAL
+          },
+          {
+            texto: 'Reformulad el prompt para corregir el sesgo y comparad.', // PROVISIONAL
+          },
+          {
+            texto: '¿Usaríais la primera imagen en un cartel de Prodiversa?', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d5-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>La caza del sesgo</p>',
+        campos: [
+          {
+            tipo: 'tabla',
+            id: 'aula-d5-registro',
+            columnas: [
+              'Escena',
+              'Sexo, edad, origen y actitud', // PROVISIONAL
+              'Prompt corregido',
+            ],
+            sufijos: [
+              'registro',
+              'corregido',
+            ],
+            filas: [
+              {
+                id: 'aula-d5-1',
+                texto: '«Una persona que dirige una ONG»',
+              },
+              {
+                id: 'aula-d5-2',
+                texto: '«Una persona experta en fontanería»',
+              },
+              {
+                id: 'aula-d5-3',
+                texto: '«Una familia que pide ayuda en servicios sociales»',
+              },
+              {
+                id: 'aula-d5-4',
+                texto: '«Una persona que cuida a niñas y niños en un centro»', // PROVISIONAL
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d5-cartel',
+            etiqueta: '¿Usaríais la primera imagen en un cartel de Prodiversa?', // PROVISIONAL
+            filas: 2,
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u4/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

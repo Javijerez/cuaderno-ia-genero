@@ -33,6 +33,156 @@ export const b_u7 = [
     ],
   },
   {
+    id: 'aula-d4',
+    titulo: 'En el aula · D4: Explícalo para que lo entienda todo el mundo', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D4 · Grupos de 3–4 · 16:55 · Diapositiva 47</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Cada grupo recibe el texto oficial vigente de un derecho, una prestación o una norma: ingreso mínimo vital, ayudas al alquiler, bono social o cambios en extranjería. Con la plantilla y la cláusula de igualdad, crea tres piezas:', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'lista',
+        columnas: 1,
+        items: [
+          {
+            texto: '<strong>Ficha en lectura fácil:</strong> Una página, con iconos y pasos numerados', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Mensaje de WhatsApp:</strong> 80 palabras como máximo, en español y en un segundo idioma', // PROVISIONAL
+          },
+          {
+            texto: '<strong>Guion de audio:</strong> Un minuto, para quien no lee', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'destacado',
+        icono: 'alerta',
+        html: '<p>Control final: subrayad en el texto oficial cada dato que aparezca en vuestras piezas. Lo que no esté subrayado, se borra.</p>', // PROVISIONAL
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d4-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Explícalo para que lo entienda todo el mundo</p>',
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d4-norma',
+            etiqueta: 'El derecho, la prestación o la norma', // PROVISIONAL
+            filas: 2,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d4-ficha',
+            etiqueta: 'Ficha en lectura fácil',
+            filas: 7,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d4-whatsapp',
+            etiqueta: 'Mensaje de WhatsApp',
+            filas: 4,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d4-audio',
+            etiqueta: 'Guion de audio',
+            filas: 5,
+          },
+        ],
+      },
+      {
+        tipo: 'checklist',
+        id: 'aula-d4-control',
+        etiqueta: 'Control final', // PROVISIONAL
+        items: [
+          'He subrayado en el texto oficial cada dato de nuestras piezas.', // PROVISIONAL
+          'He borrado lo que no estaba subrayado.', // PROVISIONAL
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u7/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
+    id: 'aula-d10',
+    titulo: 'En el aula · D10: Gafas de género: revisamos las piezas de otro grupo', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D10 · Intercambio entre grupos · 16:55 · Diapositiva 50</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tarjetas',
+        estilo: 'numeradas',
+        columnas: 1,
+        items: [
+          {
+            texto: 'Intercambiad vuestras tres piezas con otro grupo.', // PROVISIONAL
+          },
+          {
+            texto: 'Pasadlas por la lista de verificación de género.', // PROVISIONAL
+          },
+          {
+            texto: 'Pedid a la IA que las revise con la cláusula de igualdad y comparad su revisión con la vuestra.', // PROVISIONAL
+          },
+          {
+            texto: 'Presentad en un minuto el cambio más importante.', // PROVISIONAL
+          },
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d10-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>Gafas de género: revisamos las piezas de otro grupo</p>', // PROVISIONAL
+        campos: [
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d10-ia',
+            etiqueta: 'Lo que ha señalado la IA con la cláusula de igualdad', // PROVISIONAL
+            filas: 3,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d10-cambio',
+            etiqueta: 'El cambio más importante', // PROVISIONAL
+            filas: 2,
+          },
+        ],
+      },
+      {
+        tipo: 'checklist',
+        id: 'aula-d10-preguntas',
+        etiqueta: 'Preguntas clave',
+        items: [
+          '¿Damos por hecho que la madre es quien tramita?', // PROVISIONAL
+          '¿Llega a mujeres con brecha digital o sin tiempo?', // PROVISIONAL
+          '¿Las imágenes muestran diversidad sin victimizar?', // PROVISIONAL
+          '¿Se nombra a todas las personas?', // PROVISIONAL
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u7/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

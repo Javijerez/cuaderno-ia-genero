@@ -65,6 +65,11 @@ export const b_cierre = [
     icono: 'corazon',
     bloques: [
       {
+        tipo: 'destacado',
+        icono: 'personas',
+        html: '<p>Compromiso de área. Cada área acuerda un cambio para su equipo. Por ejemplo, Empleo: «revisamos nuestras plantillas de CV con la lista de verificación». Menores: «ninguna actividad sobre la familia sin filtro de historia de vida».</p>', // PROVISIONAL
+      },
+      {
         tipo: 'ejercicio',
         id: 'cierre-me-llevo',
         titulo: 'Me llevo, dejo, cambio',
@@ -99,6 +104,26 @@ export const b_cierre = [
             filas: 3,
           },
         ],
+      },
+    ],
+  },
+  {
+    id: 'aula-evaluacion',
+    titulo: 'En el aula · Evaluamos con la mano: del 0 al 5', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>Evaluación · Gran grupo · 17:40 · Diapositiva 58</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Puño cerrado = nada · Cinco dedos = totalmente. Todas las manos a la vez.', // PROVISIONAL
+      },
+      {
+        tipo: 'destacado',
+        icono: 'alerta',
+        html: '<p>Y para terminar: una palabra que resuma la jornada.</p>', // PROVISIONAL
       },
     ],
   },

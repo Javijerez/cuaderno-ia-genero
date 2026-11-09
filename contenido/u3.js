@@ -33,6 +33,180 @@ export const b_u3 = [
     ],
   },
   {
+    id: 'aula-d3',
+    titulo: 'En el aula · D3: La mesa de trabajo', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D3 · Parejas · 10:45 · Diapositiva 20</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'tabla-datos',
+        ancha: true,
+        columnas: [
+          'Perfil',
+          'Reto (con un caso ficticio)', // PROVISIONAL
+        ],
+        filas: [
+          [
+            'Inserción',
+            'Resumir una convocatoria de curso y crear el mensaje para el grupo del itinerario', // PROVISIONAL
+          ],
+          [
+            'Atención social',
+            'Convertir notas anonimizadas de una visita en un informe de seguimiento', // PROVISIONAL
+          ],
+          [
+            'Centros',
+            'Pasar las notas de una reunión de equipo a acta con tareas y responsables', // PROVISIONAL
+          ],
+          [
+            'Cualquier perfil', // PROVISIONAL
+            'Traducir un recordatorio de cita y pasarlo a lectura fácil', // PROVISIONAL
+          ],
+        ],
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d3-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>La mesa de trabajo</p>',
+        campos: [
+          {
+            tipo: 'opciones',
+            id: 'aula-d3-reto',
+            etiqueta: 'El reto que hemos elegido', // PROVISIONAL
+            opciones: [
+              {
+                letra: 'A',
+                texto: 'Resumir una convocatoria de curso y crear el mensaje para el grupo del itinerario', // PROVISIONAL
+              },
+              {
+                letra: 'B',
+                texto: 'Convertir notas anonimizadas de una visita en un informe de seguimiento', // PROVISIONAL
+              },
+              {
+                letra: 'C',
+                texto: 'Pasar las notas de una reunión de equipo a acta con tareas y responsables', // PROVISIONAL
+              },
+              {
+                letra: 'D',
+                texto: 'Traducir un recordatorio de cita y pasarlo a lectura fácil', // PROVISIONAL
+              },
+            ],
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d3-prompt',
+            etiqueta: 'El prompt que hemos usado', // PROVISIONAL
+            filas: 4,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d3-resultado',
+            etiqueta: 'El resultado, ya revisado', // PROVISIONAL
+            filas: 7,
+          },
+          {
+            tipo: 'texto-libre',
+            id: 'aula-d3-tiempo',
+            etiqueta: 'Cuánto tiempo liberaría a la semana y a qué lo dedicaría con las personas', // PROVISIONAL
+            filas: 2,
+          },
+        ],
+      },
+      {
+        tipo: 'checklist',
+        id: 'aula-d3-revision',
+        etiqueta: 'Antes de darlo por bueno', // PROVISIONAL
+        items: [
+          '¿Es correcto y completo?', // PROVISIONAL
+          '¿Sin datos personales?', // PROVISIONAL
+          '¿Tono claro y respetuoso?', // PROVISIONAL
+          '¿Lo firmarías tal cual?', // PROVISIONAL
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver el modelo resuelto',
+        destino: 'u3/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
+    id: 'aula-d3b',
+    titulo: 'En el aula · D3b: ¿Lo pego o no lo pego?', // PROVISIONAL
+    icono: 'personas',
+    bloques: [
+      {
+        tipo: 'texto',
+        html: '<p><em>D3b · Gran grupo · 10:45 · Diapositiva 22</em></p>', // PROVISIONAL
+      },
+      {
+        tipo: 'entradilla',
+        html: 'Para cada fragmento: ¿verde, ámbar o rojo?', // PROVISIONAL
+      },
+      {
+        tipo: 'ejercicio',
+        id: 'aula-d3b-ej',
+        titulo: 'Lo que hacemos', // PROVISIONAL
+        enunciado: '<p>¿Lo pego o no lo pego?</p>',
+        campos: [
+          {
+            tipo: 'tabla',
+            id: 'aula-d3b-votos',
+            columnas: [
+              'Fragmento',
+              'Mi voto: verde, ámbar o rojo', // PROVISIONAL
+            ],
+            filas: [
+              {
+                id: 'aula-d3b-1',
+                texto: '1 · Acción social. «Familia de cuatro miembros, con deuda de alquiler, pide orientación sobre ayudas»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-2',
+                texto: '2 · Igualdad. «Informe de M. L. G., víctima de violencia de género, con orden de protección»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-3',
+                texto: '3 · Migrantes. «Hombre de 28 años, sin permiso, pregunta por el arraigo; vive en [calle], tel. […]»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-4',
+                texto: '4 · Empleo. «Notas de entrevista: experiencia en hostelería, carné de manipulación de alimentos»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-5',
+                texto: '5 · Economía social. «Borrador del plan de negocio de una cooperativa de limpieza ecológica»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-6',
+                texto: '6 · Ciudadanía Global. «Guion del taller de igualdad para 3.º de ESO»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-7',
+                texto: '7 · Cooperación. «Fotos de las mujeres de la cooperativa socia, con sus nombres»', // PROVISIONAL
+              },
+              {
+                id: 'aula-d3b-8',
+                texto: '8 · Menores. «El chico de 15 años que llegó la semana pasada tiene problemas de sueño y conducta»', // PROVISIONAL
+              },
+            ],
+          },
+        ],
+      },
+      {
+        tipo: 'ir-a',
+        texto: 'Ver la solución', // PROVISIONAL
+        destino: 'u3/resuelto',
+        icono: 'llave',
+      },
+    ],
+  },
+  {
     id: 'simulacion',
     titulo: 'Simulación paso a paso',
     icono: 'bocadillo',

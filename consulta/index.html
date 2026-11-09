@@ -335,6 +335,10 @@ details.acc .in{padding:0 16px 14px}
 .parts div{display:flex;gap:10px;align-items:flex-start}
 .parts i{flex:none;font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--soft);color:var(--p);display:grid;place-items:center;font-size:13px;font-weight:900}
 @media (min-width:700px){ body{font-size:17.5px} .thumbs{grid-template-columns:1fr 1fr 1fr} .hero h1{font-size:36px} }
+.tabs a.aulatab{border-color:var(--p2);color:var(--p)}
+.tabs a.aulatab i{background:var(--p2);color:#fff}
+.tabs a.aulatab.on{background:var(--p2);border-color:var(--p2);color:#fff}
+.res.aula .rh{background:#ece4f7}
 
 .top{padding-top:env(safe-area-inset-top,0px);height:calc(var(--top) + env(safe-area-inset-top,0px))}</style>
 </head><body>
@@ -344,7 +348,7 @@ details.acc .in{padding:0 16px 14px}
 <div class="bar"><nav>
  <a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>Inicio</a>
  <button data-tab="unidades"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5A2.5 2.5 0 0 1 4 20.5z"/></svg>Unidades</button>
- <a href="#casos" data-tab="casos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 13h8"/></svg>Casos</a>
+ <a href="#aula" data-tab="aula"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg>Aula</a>
  <a href="#prompts" data-tab="prompts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4"/></svg>Prompts</a>
  <button data-tab="mas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>Más</button>
 </nav></div>
@@ -1040,6 +1044,88 @@ const GLOSARIO = [
 // ---------- DIAPOSITIVAS (orden real de la presentación) ----------
 const SLIDES = ["Portada", "Agenda", "D0 · ¿Desde dónde partimos?", "El objetivo de hoy", "Elige tu área", "Bloque A", "La IA no sabe: predice", "En qué ayuda y en qué no", "Herramientas", "D1 · La misma pregunta, dos respuestas", "Resuelto D1", "Fórmula R-C-T-F-L", "Antes y después", "Técnicas para afinar", "D2 · Tu primer prompt", "Semáforo de datos", "Anonimizar", "Seis tareas", "Seis usos más", "D3 · La mesa de trabajo", "Resuelto D3", "D3b · ¿Lo pego o no lo pego?", "Cierre del Bloque A", "Bloque B", "Tres preguntas", "Lo que no se nombra", "Dónde se cuela el sesgo", "D5 · La caza del sesgo", "Resuelto D5", "Cláusula de igualdad", "Evitar y preferir", "CV: cinco claves", "D6 · El CV que cuenta toda la historia", "Resuelto D6", "La IA entrevistadora", "D7 · La entrevista ensayada", "Resuelto D7", "E1 · ¿Persona o máquina?", "Cinco filtros", "D8 · Una actividad, dos edades", "Resuelto D8", "Emociones sin mandatos", "D9 · Emociones sin mandatos", "Resuelto D9", "De la norma al mensaje", "Plantilla para divulgar", "D4 · Explícalo para todo el mundo", "Resuelto D4", "Lista de verificación", "D10 · Gafas de género", "Lo que te llevas", "Banco de prompts 1", "Banco de prompts 2", "Banco de prompts 3", "Banco de prompts 4", "Decálogo", "Me llevo, dejo, cambio", "Evaluación", "Gracias"];
 
+// ---------- DINÁMICAS DE AULA (texto de las diapositivas) ----------
+// u: unidad (null = fuera de unidad). Orden = orden de la jornada.
+const AULA = [
+{ id: "d0", d: "D0", grupo: "Gran grupo", slide: 3, u: null, hora: "09:00",
+  titulo: "¿Desde dónde partimos con la IA?",
+  intro: "Sitúate del 0 al 10 y responde en voz alta a tres preguntas.",
+  escala: [["0", "No la he usado nunca"], ["5", "La uso a veces, sin método"], ["10", "Es parte de mi trabajo diario"]],
+  items: [["¿Quién soy?", "Mi nombre y mi área en Prodiversa"], ["¿En qué me ayudaría?", "Una tarea de mi puesto que me gustaría hacer con IA"], ["¿Qué me preocupa?", "Una palabra sobre lo que me inquieta de la IA"]] },
+{ id: "d1", d: "D1", grupo: "Parejas", slide: 10, u: 1, hora: "09:20",
+  titulo: "La misma pregunta, dos respuestas",
+  pasos: ["Abrid dos herramientas distintas.", "Haced la pregunta de vuestro ámbito (banco de casos) en las dos.", "Comparad las respuestas: ¿qué es real?, ¿qué se ha inventado?, ¿qué está desactualizado?, ¿qué falta?", "Puesta en común: una «alucinación» y un dato que habría que verificar."],
+  ejemplo: ["Ejemplo · Acción social", "«¿Qué ayudas hay en Málaga para una familia con riesgo de perder su vivienda?»"],
+  casos: "D1", res: "r1" },
+{ id: "d2", d: "D2", grupo: "Parejas del mismo perfil", slide: 15, u: 2, hora: "10:00",
+  titulo: "Tu primer prompt profesional",
+  intro: "Elige una tarea de tu puesto, escribe el prompt pobre, aplícale R-C-T-F-L y mejora el resultado en dos vueltas.",
+  tabla: { cols: ["Perfil", "Tarea para elegir"], rows: [["Inserción sociolaboral", "Oferta de empleo inclusiva para difundir en el itinerario"], ["Atención social", "Mensaje de WhatsApp para recordar una cita a una familia"], ["Centros de menores", "Normas de convivencia explicadas a niñas y niños de 8–11 años"], ["Coordinación y gestión", "Correo a una empresa colaboradora para proponer prácticas"]] },
+  res: "r2", prompts: [2, 4] },
+{ id: "d3", d: "D3", grupo: "Parejas", slide: 20, u: 3, hora: "10:45",
+  titulo: "La mesa de trabajo",
+  tabla: { cols: ["Perfil", "Reto (con un caso ficticio)"], rows: [["Inserción", "Resumir una convocatoria de curso y crear el mensaje para el grupo del itinerario"], ["Atención social", "Convertir notas anonimizadas de una visita en un informe de seguimiento"], ["Centros", "Pasar las notas de una reunión de equipo a acta con tareas y responsables"], ["Cualquier perfil", "Traducir un recordatorio de cita y pasarlo a lectura fácil"]] },
+  revision: ["Antes de darlo por bueno", ["¿Es correcto y completo?", "¿Sin datos personales?", "¿Tono claro y respetuoso?", "¿Lo firmarías tal cual?"]],
+  res: "r3", prompts: [5, 6] },
+{ id: "d3b", d: "D3b", grupo: "Gran grupo", slide: 22, u: 3, hora: "10:45",
+  titulo: "¿Lo pego o no lo pego?",
+  intro: "Para cada fragmento: ¿verde, ámbar o rojo?",
+  lista: ["1 · Acción social. «Familia de cuatro miembros, con deuda de alquiler, pide orientación sobre ayudas»", "2 · Igualdad. «Informe de M. L. G., víctima de violencia de género, con orden de protección»", "3 · Migrantes. «Hombre de 28 años, sin permiso, pregunta por el arraigo; vive en [calle], tel. […]»", "4 · Empleo. «Notas de entrevista: experiencia en hostelería, carné de manipulación de alimentos»", "5 · Economía social. «Borrador del plan de negocio de una cooperativa de limpieza ecológica»", "6 · Ciudadanía Global. «Guion del taller de igualdad para 3.º de ESO»", "7 · Cooperación. «Fotos de las mujeres de la cooperativa socia, con sus nombres»", "8 · Menores. «El chico de 15 años que llegó la semana pasada tiene problemas de sueño y conducta»"],
+  res: "r3b" },
+{ id: "rapida", d: "Dinámica rápida", grupo: "Gran grupo", slide: 26, u: 4, hora: "12:15",
+  titulo: "Lo que no se nombra no existe… tampoco para la IA",
+  intro: "Pide a la IA: «Haz la lista del personal de un centro de menores y de una empresa de construcción, con sus puestos.»",
+  preguntas: ["¿Cuántas mujeres aparecen en cada lista?", "¿En qué puestos?", "¿Usa el masculino genérico?"],
+  res: "r4" },
+{ id: "d5", d: "D5", grupo: "Grupos de 3–4", slide: 28, u: 4, hora: "12:15",
+  titulo: "La caza del sesgo",
+  bloques2: [["1. Pedid a la IA de imágenes…", ["«Una persona que dirige una ONG»", "«Una persona experta en fontanería»", "«Una familia que pide ayuda en servicios sociales»", "«Una persona que cuida a niñas y niños en un centro»"]], ["2. Registrad y corregid", ["Anotad sexo, edad, origen y actitud de cada persona.", "Reformulad el prompt para corregir el sesgo y comparad.", "¿Usaríais la primera imagen en un cartel de Prodiversa?"]]],
+  res: "r5", prompts: [1, 7] },
+{ id: "d6", d: "D6", grupo: "Parejas", slide: 33, u: 5, hora: "13:30",
+  titulo: "El CV que cuenta toda la historia",
+  ejemplo: ["Caso ficticio", "Rosa, 45 años. Diez años cuidando de sus hijos y de su madre. Antes, cinco años en hostelería. Arregla todo en casa y quiere trabajar en mantenimiento de edificios."],
+  pasos: ["Pedid a la IA un CV para Rosa sin indicaciones. ¿Qué hace con los diez años? ¿Hacia qué sector la orienta?", "Repetid con R-C-T-F-L, la cláusula de igualdad y: «reconoce como experiencia el trabajo de cuidados, aunque no haya sido remunerado, y tradúcelo en competencias para el puesto».", "Comparad las dos versiones con las cinco claves y quedaos con la mejor."],
+  res: "r6", prompts: [8] },
+{ id: "d7", d: "D7", grupo: "Tríos", slide: 36, u: 5, hora: "14:20",
+  titulo: "La entrevista ensayada",
+  items: [["Candidata", "Hace de Rosa y responde en voz alta"], ["Entrevista", "Maneja la IA con el prompt de entrevista"], ["Observación", "Observa y anota lo que funciona y los sesgos"]],
+  pasos: ["Ronda 1: entrevista con la IA (cinco preguntas).", "Ronda 2: quien entrevista introduce una pregunta discriminatoria y Rosa ensaya su respuesta.", "Cierre: ¿la retroalimentación de la IA es útil y justa?"],
+  res: "r7", prompts: [9] },
+{ id: "e1", d: "E1", grupo: "De pie", slide: 38, u: 6, hora: "16:00",
+  titulo: "¿Persona o máquina?",
+  items: [["Izquierda", "Si crees que el texto lo ha escrito una persona"], ["Derecha", "Si crees que lo ha escrito la IA"], ["Y después", "¿En cuáles había un estereotipo?"]] },
+{ id: "d8", d: "D8", grupo: "Grupos de 3", slide: 40, u: 6, hora: "16:00",
+  titulo: "Una actividad, dos edades",
+  pasos: ["Pedid a la IA una dinámica sobre profesiones para niñas y niños de 8 a 11 años, sin más indicaciones.", "Pasadla por los cinco filtros. ¿Qué profesiones asocia a cada sexo? ¿Da por hecho una familia?", "Reescribid el prompt con los filtros y la cláusula de igualdad.", "Adaptadla a adolescentes de 14 a 17 años que preparan su vida adulta."],
+  ejemplo: ["Fragmento del prompt", "«…para un centro de protección. No pidas hablar de la familia ni de recuerdos personales. Incluye referentes de mujeres en ciencia y oficios y de hombres en cuidados. Que todas y todos puedan elegir cualquier rol.»"],
+  res: "r8", prompts: [10] },
+{ id: "d9", d: "D9", grupo: "Grupos de 3", slide: 43, u: 6, hora: "16:00",
+  titulo: "Emociones sin mandatos",
+  items: [["Un cuento", "Un chico que aprende a pedir ayuda cuando está triste (8–11 años)"], ["Tarjetas", "Diez situaciones para nombrar emociones, con protagonistas diversos"], ["Un role-play", "Detectar el control en una pareja adolescente por el móvil (14–17)"]],
+  revision: ["Revisión antes de usarlo", ["¿Rompe algún mandato de género?", "¿Es seguro para su historia de vida?", "¿El lenguaje es adecuado a la edad?", "¿Lo usaría yo mañana en el centro?"]],
+  res: "r9", prompts: [11] },
+{ id: "d4", d: "D4", grupo: "Grupos de 3–4", slide: 47, u: 7, hora: "16:55",
+  titulo: "Explícalo para que lo entienda todo el mundo",
+  intro: "Cada grupo recibe el texto oficial vigente de un derecho, una prestación o una norma: ingreso mínimo vital, ayudas al alquiler, bono social o cambios en extranjería. Con la plantilla y la cláusula de igualdad, crea tres piezas:",
+  items: [["Ficha en lectura fácil", "Una página, con iconos y pasos numerados"], ["Mensaje de WhatsApp", "80 palabras como máximo, en español y en un segundo idioma"], ["Guion de audio", "Un minuto, para quien no lee"]],
+  nota: "Control final: subrayad en el texto oficial cada dato que aparezca en vuestras piezas. Lo que no esté subrayado, se borra.",
+  res: "r4b", prompts: [12] },
+{ id: "d10", d: "D10", grupo: "Intercambio entre grupos", slide: 50, u: 7, hora: "16:55",
+  titulo: "Gafas de género: revisamos las piezas de otro grupo",
+  pasos: ["Intercambiad vuestras tres piezas con otro grupo.", "Pasadlas por la lista de verificación de género.", "Pedid a la IA que las revise con la cláusula de igualdad y comparad su revisión con la vuestra.", "Presentad en un minuto el cambio más importante."],
+  revision: ["Preguntas clave", ["¿Damos por hecho que la madre es quien tramita?", "¿Llega a mujeres con brecha digital o sin tiempo?", "¿Las imágenes muestran diversidad sin victimizar?", "¿Se nombra a todas las personas?"]],
+  res: "r10", prompts: [13] },
+{ id: "cierre", d: "Cierre", grupo: "Individual y por áreas", slide: 57, u: null, hora: "17:40",
+  titulo: "Me llevo, dejo, cambio… y nos comprometemos",
+  items: [["Me llevo", "Un prompt o una idea que usaré esta semana"], ["Dejo", "Una costumbre con la IA que voy a abandonar"], ["Cambio", "Un contenido que revisaré con perspectiva de género"]],
+  nota: "Compromiso de área. Cada área acuerda un cambio para su equipo. Por ejemplo, Empleo: «revisamos nuestras plantillas de CV con la lista de verificación». Menores: «ninguna actividad sobre la familia sin filtro de historia de vida»." },
+{ id: "evaluacion", d: "Evaluación", grupo: "Gran grupo", slide: 58, u: null, hora: "17:40",
+  titulo: "Evaluamos con la mano: del 0 al 5",
+  intro: "Puño cerrado = nada · Cinco dedos = totalmente. Todas las manos a la vez.",
+  lista: ["1 Lo que he aprendido me sirve en mi trabajo", "2 Las dinámicas y los casos han sido útiles", "3 Me siento capaz de usar la IA con perspectiva de género", "4 El ritmo y la organización han sido adecuados"],
+  nota: "Y para terminar: una palabra que resuma la jornada." }
+];
+
 </script>
 <script>(function () {
 "use strict";
@@ -1122,7 +1208,7 @@ function describeHere() {
     const u = unitById(+m[1]);
     const act = $(".tabs a.on");
     const part = act ? act.dataset.part : null;
-    return `Unidad ${u.n}` + (part ? ` · ${partName(part)}` : "");
+    return `Unidad ${u.n}` + (part ? ` · ${part === "aula" ? "En el aula" : partName(part)}` : "");
   }
   if (h.startsWith("casos")) return "Banco de casos";
   if (h.startsWith("prompts")) return "Banco de prompts";
@@ -1133,6 +1219,7 @@ function describeHere() {
   if (h.startsWith("glosario")) return "Glosario";
   if (h.startsWith("diapositivas")) return "Diapositivas";
   if (h.startsWith("uso")) return "Cómo usar el cuaderno";
+  if (h.startsWith("aula")) return "Dinámicas de la jornada";
   return "Inicio";
 }
 
@@ -1193,6 +1280,7 @@ function pageInicio() {
     ${a ? `<p style="margin:6px 0 10px">Trabajas en <b>${a.name}</b>. En cada unidad verás directamente tus casos.</p><div class="btns" style="margin-top:0"><a class="btn fill" href="#casos-${a.id}">Ver mis casos</a><button class="btn" data-act="pickarea">Cambiar área</button></div>`
         : `<p style="margin:6px 0 10px">Elige tu área de trabajo y el cuaderno te enseñará tus casos en cada unidad.</p>${areaPicker()}`}
   </div>`;
+  h += lnk("aula", I.users, "Dinámicas de la jornada", "D0 a D10, en el orden de hoy, con sus modelos resueltos", "resume");
   h += `<div class="sec-h"><h2>Las 7 unidades</h2><span class="small muted">Una por módulo</span></div>`;
   h += `<div class="eyebrow" style="margin-top:12px">Bloque A · La IA como herramienta profesional</div>`;
   UNITS.forEach(u => {
@@ -1233,6 +1321,7 @@ function pageUso() {
   <div class="parts" style="margin-top:10px">
    <div><i>↓</i><span><b>Barra de abajo:</b> siempre en el mismo sitio. Inicio, Unidades, Casos, Prompts y Más.</span></div>
    <div><i>←</i><span><b>Botón «Volver a…»:</b> cuando un enlace te lleve a otro sitio (un caso resuelto, un prompt…), aparece encima de la barra para regresar justo donde estabas.</span></div>
+   <div><i>▶</i><span><b>En el aula:</b> cada unidad tiene, además, las dinámicas que hacemos en la jornada. También las tienes todas juntas en «Dinámicas de la jornada».</span></div>
    <div><i>★</i><span><b>Tu área:</b> elígela una vez y verás tus casos dentro de cada misión.</span></div>
   </div></div>
   <div class="sec-h"><h2>Seis buenas prácticas</h2></div>
@@ -1248,10 +1337,13 @@ function pageUnit(n) {
   <div class="uhead"><div class="num">${String(u.n).padStart(2, "0")}</div><div>
     <div class="eyebrow">Unidad ${u.n} · Bloque ${u.bloque} · ${u.mod}</div>
     <h1>${u.title}</h1><p>${u.goal}</p>${slideBtn(u.slides[0], u.slides[1])}</div></div>
-  <div class="tabs"><div class="row">${PARTES.map(p => `<a href="#u${u.n}-${p.id}" data-part="${p.id}"><i>${p.n}</i>${p.corto}</a>`).join("")}</div></div>`;
+  <div class="tabs"><div class="row">${PARTES.map(p => `<a href="#u${u.n}-${p.id}" data-part="${p.id}"><i>${p.n}</i>${p.corto}</a>` + (p.id === "esencial" ? `<a href="#u${u.n}-aula" data-part="aula" class="aulatab"><i>▶</i>En el aula</a>` : "")).join("")}</div></div>`;
 
   // 1 esencial
   h += `<section class="part" id="u${u.n}-esencial">${partHead(PARTES[0])}<ol class="ess">${u.esencial.map(e => `<li>${e}</li>`).join("")}</ol></section>`;
+  // en el aula
+  const din = AULA.filter(x => x.u === u.n);
+  h += `<section class="part" id="u${u.n}-aula"><div class="ph"><span class="n">▶</span><h2>En el aula</h2><span class="tag">${din.map(x => x.d).join(" · ")}</span></div><p class="muted small" style="margin:0">Lo que hacemos en la jornada con esta unidad. Tu misión, más abajo, es para practicar después en tu puesto.</p>${din.map(x => aulaCard(x, true)).join("")}</section>`;
   // 2 simulación
   h += `<section class="part" id="u${u.n}-simulacion">${partHead(PARTES[1])}<div class="card" style="margin-top:8px"><h3 style="font-size:18px">${u.sim.title}</h3><p class="muted" style="margin:6px 0 0">${u.sim.intro}</p>
     <div class="chat">${u.sim.steps.map(s => `<div class="msg ${s.who}${s.rojo ? " rojo" : ""}"><span class="who">${s.label || (s.who === "tu" ? "Tú" : s.who === "ia" ? "IA" : "")}</span>${esc(s.text)}${s.note ? `<span class="note">${esc(s.note)}</span>` : ""}</div>`).join("")}</div></div></section>`;
@@ -1283,7 +1375,7 @@ function resueltoCard(u, r, i) {
   return `<article class="res anchor" id="u${u.n}-${r.id}"><div class="rh"><span class="eyebrow">Caso resuelto · ${r.tag}</span><h3>${r.title}</h3>${slideBtn(r.slide, r.slide2 || r.slide)}</div>
    <div class="rb"><p class="intro">${r.intro}</p>${r.rows.map(x => `<div class="row"><span class="l">${x.l}</span>${x.t}${x.n ? `<span class="n">${x.n}</span>` : ""}</div>`).join("")}</div>
    <div class="clave"><b>Clave:</b> ${r.clave}</div>
-   ${i === 0 ? `<div class="rf"><a class="btn" href="#u${u.n}-mision">${I.back.replace("<svg", '<svg width="18" height="18"')} Volver a tu misión</a><a class="btn" href="#u${u.n}-practica">Ir a practicar</a></div>` : ""}
+   ${(() => { const dn = AULA.find(x => x.res === r.id); return `<div class="rf">${dn ? `<a class="btn" href="#u${u.n}-aula-${dn.id}">${I.back.replace("<svg", '<svg width="18" height="18"')} Volver a la dinámica ${dn.d}</a>` : ""}${i === 0 ? `<a class="btn" href="#u${u.n}-mision">${dn ? "" : I.back.replace("<svg", '<svg width="18" height="18"') + " "}Volver a tu misión</a>` : ""}</div>`; })()}
   </article>`;
 }
 function misionCasos(u, a) {
@@ -1318,6 +1410,37 @@ function qBlock(u, kind, i, q, opts, a, s, sem, col) {
     }).join("")}</div>
    <div class="sol"><b>${done ? (v === a ? "¡Correcto!" : "Respuesta correcta: " + esc(opts[a])) : ""}</b>${esc(s)}</div>
   </div>`;
+}
+
+// ---------- dinámicas de aula ----------
+function aulaCard(a, enUnidad) {
+  const u = a.u ? unitById(a.u) : null;
+  let h = `<article class="res anchor aula" id="${enUnidad ? `u${a.u}-` : ""}aula-${a.id}"><div class="rh"><span class="eyebrow">${a.d} · ${a.grupo}${a.hora ? " · " + a.hora : ""}</span><h3>${a.titulo}</h3>${slideBtn(a.slide, a.slide)}</div><div class="rb">`;
+  if (a.intro) h += `<p class="intro" style="color:var(--ink)">${a.intro}</p>`;
+  if (a.escala) h += `<div class="chips" style="margin:10px 0">${a.escala.map(e => `<span class="chip"><b style="color:var(--p)">${e[0]}</b>&nbsp;· ${e[1]}</span>`).join("")}</div>`;
+  if (a.ejemplo) h += `<div class="row"><span class="l">${a.ejemplo[0]}</span>${a.ejemplo[1]}</div>`;
+  if (a.items) h += a.items.map(x => `<div class="row"><span class="l">${x[0]}</span>${x[1]}</div>`).join("");
+  if (a.pasos) h += `<ol class="steps">${a.pasos.map(p => `<li><span>${p}</span></li>`).join("")}</ol>`;
+  if (a.tabla) h += a.tabla.rows.map(r => `<div class="row"><span class="l">${a.tabla.cols[0]}: ${r[0]}</span>${r[1]}</div>`).join("");
+  if (a.bloques2) h += a.bloques2.map(b => `<div class="row"><span class="l">${b[0]}</span><ul style="margin:4px 0 0;padding-left:20px">${b[1].map(x => `<li>${x}</li>`).join("")}</ul></div>`).join("");
+  if (a.lista) h += `<ul style="margin:8px 0 0;padding-left:20px">${a.lista.map(x => `<li style="margin:6px 0">${x}</li>`).join("")}</ul>`;
+  if (a.preguntas) h += `<ul style="margin:8px 0 0;padding-left:20px">${a.preguntas.map(x => `<li>${x}</li>`).join("")}</ul>`;
+  if (a.revision) h += `<div class="row"><span class="l">${a.revision[0]}</span><ul style="margin:4px 0 0;padding-left:20px">${a.revision[1].map(x => `<li>${x}</li>`).join("")}</ul></div>`;
+  h += `</div>`;
+  if (a.nota) h += `<div class="clave">${a.nota}</div>`;
+  const bt = [];
+  if (a.casos && u) bt.push(`<a class="btn" href="#casos${area ? "-" + area : ""}" data-ret>Mi caso ${a.casos}</a>`);
+  if (a.res && u) bt.push(`<a class="btn fill" href="#u${u.n}-${a.res}" data-ret>${a.id === "d3b" ? "Ver la solución" : "Ver el modelo resuelto"}</a>`);
+  (a.prompts || []).forEach(n => bt.push(`<a class="btn" href="#prompts-${n}" data-ret>Prompt ${n}</a>`));
+  if (!enUnidad && u) bt.push(`<a class="btn" href="#u${u.n}">Unidad ${u.n}</a>`);
+  if (bt.length) h += `<div class="rf">${bt.join("")}</div>`;
+  return h + `</article>`;
+}
+function pageAula() {
+  return `<div class="wrap"><div class="hero" style="padding-bottom:0"><div class="eyebrow">${META.fecha}</div><h1 style="font-size:26px;margin-top:6px">Dinámicas de la jornada</h1>
+  <p>Las dinámicas de la presentación, en el orden en que las haremos. Cada una enlaza con su modelo resuelto y con los prompts que necesitas.</p></div>
+  <div class="toc">${AULA.map(a => `<a href="#aula-${a.id}">${a.d}</a>`).join("")}</div>
+  ${AULA.map(a => aulaCard(a, false)).join("")}</div>`;
 }
 
 // ---------- página: CASOS ----------
@@ -1407,11 +1530,12 @@ function pageDiapos() {
 
 // ---------- hojas ----------
 function sheetUnits() {
-  return `<div class="wrap"><div class="grab"></div><h3>Unidades</h3>${UNITS.map(unitLink).join("")}
-  <h3 style="margin-top:18px">Ir directo a…</h3><div class="toc" style="flex-wrap:wrap">${UNITS.map(u => `<a href="#u${u.n}-mision">U${u.n} · Misión</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-resuelto">U${u.n} · Resuelto</a>`).join("")}</div></div>`;
+  return `<div class="wrap"><div class="grab"></div>${lnk("aula", I.users, "Dinámicas de la jornada", "En el orden de hoy", "resume")}<h3 style="margin-top:14px">Unidades</h3>${UNITS.map(unitLink).join("")}
+  <h3 style="margin-top:18px">Ir directo a…</h3><div class="toc" style="flex-wrap:wrap">${UNITS.map(u => `<a href="#u${u.n}-aula">U${u.n} · En el aula</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-mision">U${u.n} · Misión</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-resuelto">U${u.n} · Resuelto</a>`).join("")}</div></div>`;
 }
 function sheetMore() {
   return `<div class="wrap"><div class="grab"></div><h3>Más</h3><div class="grid2">
+   <a class="tile" href="#casos">${I.folder}<b>Banco de casos</b><small>Tus casos por área</small></a>
    <a class="tile" href="#herramientas">${I.tools}<b>Herramientas</b><small>Semáforo, cláusula, lista</small></a>
    <a class="tile" href="#llevas">${I.bag}<b>Lo que te llevas</b><small>Materiales y modelos</small></a>
    <a class="tile" href="#diapositivas">${I.slides}<b>Diapositivas</b><small>Las 59 de la jornada</small></a>
@@ -1448,10 +1572,10 @@ function pageKey(h) {
   let m;
   if ((m = h.match(/^u(\d)(-|$)/))) return "u" + m[1];
   if ((m = h.match(/^casos(?:-([a-z]+))?/))) return "casos-" + (m[1] || "");
-  for (const k of ["prompts", "herramientas", "llevas", "programa", "marco", "glosario", "diapositivas", "uso"]) if (h.startsWith(k)) return k;
+  for (const k of ["prompts", "herramientas", "llevas", "programa", "marco", "glosario", "diapositivas", "uso", "aula"]) if (h.startsWith(k)) return k;
   return "inicio";
 }
-const TITLES = { inicio: "Cuaderno · IA con perspectiva de género", prompts: "Banco de prompts", herramientas: "Herramientas", llevas: "Lo que te llevas", programa: "Programa", marco: "Marco normativo", glosario: "Glosario", diapositivas: "Diapositivas", uso: "Cómo usar el cuaderno" };
+const TITLES = { inicio: "Cuaderno · IA con perspectiva de género", prompts: "Banco de prompts", herramientas: "Herramientas", llevas: "Lo que te llevas", programa: "Programa", marco: "Marco normativo", glosario: "Glosario", diapositivas: "Diapositivas", uso: "Cómo usar el cuaderno", aula: "Dinámicas de la jornada" };
 
 function route() {
   closeSheet();
@@ -1462,7 +1586,7 @@ function route() {
     if (key === "inicio") html = pageInicio();
     else if (key[0] === "u" && key.length === 2) html = pageUnit(+key[1]);
     else if (key.startsWith("casos-")) html = pageCasos(key.slice(6));
-    else html = ({ prompts: pagePrompts, herramientas: pageHerr, llevas: pageLlevas, programa: pagePrograma, marco: pageMarco, glosario: pageGlos, diapositivas: pageDiapos, uso: pageUso })[key]();
+    else html = ({ prompts: pagePrompts, herramientas: pageHerr, llevas: pageLlevas, programa: pagePrograma, marco: pageMarco, glosario: pageGlos, diapositivas: pageDiapos, uso: pageUso, aula: pageAula })[key]();
     main().innerHTML = html;
     curPage = key;
     if (key[0] === "u" && key.length === 2) setupSpy();
@@ -1474,7 +1598,7 @@ function route() {
   $("#ttl").textContent = t || "";
   // barra inferior activa
   $$(".bar [data-tab]").forEach(b => b.classList.remove("on"));
-  const tab = key === "inicio" ? "inicio" : key[0] === "u" && key.length === 2 ? "unidades" : key.startsWith("casos") ? "casos" : key === "prompts" ? "prompts" : "mas";
+  const tab = key === "inicio" ? "inicio" : key[0] === "u" && key.length === 2 ? "unidades" : key === "aula" ? "aula" : key === "prompts" ? "prompts" : "mas";
   const tb = $(`.bar [data-tab="${tab}"]`); if (tb) tb.classList.add("on");
   updateAreaChip();
   // desplazamiento
