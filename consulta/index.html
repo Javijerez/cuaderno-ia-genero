@@ -1219,7 +1219,8 @@ function describeHere() {
   if (h.startsWith("glosario")) return "Glosario";
   if (h.startsWith("diapositivas")) return "Diapositivas";
   if (h.startsWith("uso")) return "Cómo usar el cuaderno";
-  if (h.startsWith("aula")) return "Dinámicas de la jornada";
+  if (h.startsWith("aula-")) { const a = AULA.find(x => "aula-" + x.id === h); if (a) return dname(a); }
+  if (h.startsWith("aula")) return "Prácticas de aula";
   return "Inicio";
 }
 
@@ -1280,7 +1281,7 @@ function pageInicio() {
     ${a ? `<p style="margin:6px 0 10px">Trabajas en <b>${a.name}</b>. En cada unidad verás directamente tus casos.</p><div class="btns" style="margin-top:0"><a class="btn fill" href="#casos-${a.id}">Ver mis casos</a><button class="btn" data-act="pickarea">Cambiar área</button></div>`
         : `<p style="margin:6px 0 10px">Elige tu área de trabajo y el cuaderno te enseñará tus casos en cada unidad.</p>${areaPicker()}`}
   </div>`;
-  h += lnk("aula", I.users, "Dinámicas de la jornada", "D0 a D10, en el orden de hoy, con sus modelos resueltos", "resume");
+  h += lnk("aula", I.users, "Prácticas de aula", "Dinámicas D0 a D10, en el orden de hoy, cada una en su pantalla", "resume");
   h += `<div class="sec-h"><h2>Las 7 unidades</h2><span class="small muted">Una por módulo</span></div>`;
   h += `<div class="eyebrow" style="margin-top:12px">Bloque A · La IA como herramienta profesional</div>`;
   UNITS.forEach(u => {
@@ -1321,7 +1322,7 @@ function pageUso() {
   <div class="parts" style="margin-top:10px">
    <div><i>↓</i><span><b>Barra de abajo:</b> siempre en el mismo sitio. Inicio, Unidades, Casos, Prompts y Más.</span></div>
    <div><i>←</i><span><b>Botón «Volver a…»:</b> cuando un enlace te lleve a otro sitio (un caso resuelto, un prompt…), aparece encima de la barra para regresar justo donde estabas.</span></div>
-   <div><i>▶</i><span><b>En el aula:</b> cada unidad tiene, además, las dinámicas que hacemos en la jornada. También las tienes todas juntas en «Dinámicas de la jornada».</span></div>
+   <div><i>▶</i><span><b>En el aula:</b> cada unidad tiene, además, las dinámicas que hacemos en la jornada. También las tienes todas en «Prácticas de aula», cada una en su pantalla.</span></div>
    <div><i>★</i><span><b>Tu área:</b> elígela una vez y verás tus casos dentro de cada misión.</span></div>
   </div></div>
   <div class="sec-h"><h2>Seis buenas prácticas</h2></div>
@@ -1343,7 +1344,7 @@ function pageUnit(n) {
   h += `<section class="part" id="u${u.n}-esencial">${partHead(PARTES[0])}<ol class="ess">${u.esencial.map(e => `<li>${e}</li>`).join("")}</ol></section>`;
   // en el aula
   const din = AULA.filter(x => x.u === u.n);
-  h += `<section class="part" id="u${u.n}-aula"><div class="ph"><span class="n">▶</span><h2>En el aula</h2><span class="tag">${din.map(x => x.d).join(" · ")}</span></div><p class="muted small" style="margin:0">Lo que hacemos en la jornada con esta unidad. Tu misión, más abajo, es para practicar después en tu puesto.</p>${din.map(x => aulaCard(x, true)).join("")}</section>`;
+  h += `<section class="part" id="u${u.n}-aula"><div class="ph"><span class="n">▶</span><h2>En el aula</h2></div><p class="muted small" style="margin:0 0 4px">Las prácticas de aula de esta unidad. Tu misión, más abajo, es para practicar después en tu puesto.</p>${din.map(aulaLink).join("")}</section>`;
   // 2 simulación
   h += `<section class="part" id="u${u.n}-simulacion">${partHead(PARTES[1])}<div class="card" style="margin-top:8px"><h3 style="font-size:18px">${u.sim.title}</h3><p class="muted" style="margin:6px 0 0">${u.sim.intro}</p>
     <div class="chat">${u.sim.steps.map(s => `<div class="msg ${s.who}${s.rojo ? " rojo" : ""}"><span class="who">${s.label || (s.who === "tu" ? "Tú" : s.who === "ia" ? "IA" : "")}</span>${esc(s.text)}${s.note ? `<span class="note">${esc(s.note)}</span>` : ""}</div>`).join("")}</div></div></section>`;
@@ -1375,7 +1376,7 @@ function resueltoCard(u, r, i) {
   return `<article class="res anchor" id="u${u.n}-${r.id}"><div class="rh"><span class="eyebrow">Caso resuelto · ${r.tag}</span><h3>${r.title}</h3>${slideBtn(r.slide, r.slide2 || r.slide)}</div>
    <div class="rb"><p class="intro">${r.intro}</p>${r.rows.map(x => `<div class="row"><span class="l">${x.l}</span>${x.t}${x.n ? `<span class="n">${x.n}</span>` : ""}</div>`).join("")}</div>
    <div class="clave"><b>Clave:</b> ${r.clave}</div>
-   ${(() => { const dn = AULA.find(x => x.res === r.id); return `<div class="rf">${dn ? `<a class="btn" href="#u${u.n}-aula-${dn.id}">${I.back.replace("<svg", '<svg width="18" height="18"')} Volver a la dinámica ${dn.d}</a>` : ""}${i === 0 ? `<a class="btn" href="#u${u.n}-mision">${dn ? "" : I.back.replace("<svg", '<svg width="18" height="18"') + " "}Volver a tu misión</a>` : ""}</div>`; })()}
+   ${(() => { const dn = AULA.find(x => x.res === r.id); return `<div class="rf">${dn ? `<a class="btn" href="#aula-${dn.id}">${I.back.replace("<svg", '<svg width="18" height="18"')} Volver a la ${dname(dn).toLowerCase()}</a>` : ""}${i === 0 ? `<a class="btn" href="#u${u.n}-mision">${dn ? "" : I.back.replace("<svg", '<svg width="18" height="18"') + " "}Volver a tu misión</a>` : ""}</div>`; })()}
   </article>`;
 }
 function misionCasos(u, a) {
@@ -1413,9 +1414,11 @@ function qBlock(u, kind, i, q, opts, a, s, sem, col) {
 }
 
 // ---------- dinámicas de aula ----------
+const dname = a => /^[DE]\d/.test(a.d) ? `Dinámica ${a.d}` : a.d;
+const dfull = a => `${dname(a)} · ${a.titulo}`;
 function aulaCard(a, enUnidad) {
   const u = a.u ? unitById(a.u) : null;
-  let h = `<article class="res anchor aula" id="${enUnidad ? `u${a.u}-` : ""}aula-${a.id}"><div class="rh"><span class="eyebrow">${a.d} · ${a.grupo}${a.hora ? " · " + a.hora : ""}</span><h3>${a.titulo}</h3>${slideBtn(a.slide, a.slide)}</div><div class="rb">`;
+  let h = `<article class="res aula"><div class="rh"><span class="eyebrow">Práctica de aula · ${a.grupo}${a.hora ? " · " + a.hora : ""}</span><h3>${dfull(a)}</h3>${slideBtn(a.slide, a.slide)}</div><div class="rb">`;
   if (a.intro) h += `<p class="intro" style="color:var(--ink)">${a.intro}</p>`;
   if (a.escala) h += `<div class="chips" style="margin:10px 0">${a.escala.map(e => `<span class="chip"><b style="color:var(--p)">${e[0]}</b>&nbsp;· ${e[1]}</span>`).join("")}</div>`;
   if (a.ejemplo) h += `<div class="row"><span class="l">${a.ejemplo[0]}</span>${a.ejemplo[1]}</div>`;
@@ -1432,15 +1435,25 @@ function aulaCard(a, enUnidad) {
   if (a.casos && u) bt.push(`<a class="btn" href="#casos${area ? "-" + area : ""}" data-ret>Mi caso ${a.casos}</a>`);
   if (a.res && u) bt.push(`<a class="btn fill" href="#u${u.n}-${a.res}" data-ret>${a.id === "d3b" ? "Ver la solución" : "Ver el modelo resuelto"}</a>`);
   (a.prompts || []).forEach(n => bt.push(`<a class="btn" href="#prompts-${n}" data-ret>Prompt ${n}</a>`));
-  if (!enUnidad && u) bt.push(`<a class="btn" href="#u${u.n}">Unidad ${u.n}</a>`);
+  if (u) bt.push(`<a class="btn" href="#u${u.n}">Unidad ${u.n}</a>`);
   if (bt.length) h += `<div class="rf">${bt.join("")}</div>`;
   return h + `</article>`;
 }
+function aulaLink(a) {
+  return `<a class="lnk" href="#aula-${a.id}"><span class="ic" style="font-size:13px">${a.d.length <= 3 ? a.d : "▶"}</span><span class="tx"><b>${dfull(a)}</b><small>${a.hora ? a.hora + " · " : ""}${a.grupo}${a.u ? " · Unidad " + a.u : ""}</small></span><span class="chev">${I.chev}</span></a>`;
+}
 function pageAula() {
-  return `<div class="wrap"><div class="hero" style="padding-bottom:0"><div class="eyebrow">${META.fecha}</div><h1 style="font-size:26px;margin-top:6px">Dinámicas de la jornada</h1>
-  <p>Las dinámicas de la presentación, en el orden en que las haremos. Cada una enlaza con su modelo resuelto y con los prompts que necesitas.</p></div>
-  <div class="toc">${AULA.map(a => `<a href="#aula-${a.id}">${a.d}</a>`).join("")}</div>
-  ${AULA.map(a => aulaCard(a, false)).join("")}</div>`;
+  return `<div class="wrap"><div class="hero" style="padding-bottom:0"><div class="eyebrow">${META.fecha}</div><h1 style="font-size:26px;margin-top:6px">Prácticas de aula</h1>
+  <p>Las dinámicas de la presentación, en el orden en que las haremos. Toca una para abrirla: cada práctica está en su propia pantalla.</p></div>
+  ${AULA.map(aulaLink).join("")}</div>`;
+}
+function pageAulaUna(id) {
+  const i = AULA.findIndex(x => x.id === id), a = AULA[i];
+  if (!a) return pageAula();
+  const prev = AULA[i - 1], next = AULA[i + 1];
+  return `<div class="wrap" style="padding-top:14px"><a class="slidelink" href="#aula">${I.back.replace("<svg", '<svg width="18" height="18"')}<span>Todas las prácticas de aula</span></a>
+  ${aulaCard(a)}
+  <div class="unav">${prev ? `<a href="#aula-${prev.id}">← Anterior<b>${dfull(prev)}</b></a>` : `<a href="#aula">← Índice<b>Prácticas de aula</b></a>`}${next ? `<a class="nx" href="#aula-${next.id}">Siguiente →<b>${dfull(next)}</b></a>` : `<a class="nx" href="#aula">Índice →<b>Prácticas de aula</b></a>`}</div></div>`;
 }
 
 // ---------- página: CASOS ----------
@@ -1530,8 +1543,8 @@ function pageDiapos() {
 
 // ---------- hojas ----------
 function sheetUnits() {
-  return `<div class="wrap"><div class="grab"></div>${lnk("aula", I.users, "Dinámicas de la jornada", "En el orden de hoy", "resume")}<h3 style="margin-top:14px">Unidades</h3>${UNITS.map(unitLink).join("")}
-  <h3 style="margin-top:18px">Ir directo a…</h3><div class="toc" style="flex-wrap:wrap">${UNITS.map(u => `<a href="#u${u.n}-aula">U${u.n} · En el aula</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-mision">U${u.n} · Misión</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-resuelto">U${u.n} · Resuelto</a>`).join("")}</div></div>`;
+  return `<div class="wrap"><div class="grab"></div>${lnk("aula", I.users, "Prácticas de aula", "Dinámicas D0 a D10, en el orden de hoy", "resume")}<h3 style="margin-top:14px">Unidades</h3>${UNITS.map(unitLink).join("")}
+  <h3 style="margin-top:18px">Ir directo a…</h3><div class="toc" style="flex-wrap:wrap">${AULA.map(a => `<a href="#aula-${a.id}">${a.d}</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-mision">U${u.n} · Misión</a>`).join("")}${UNITS.map(u => `<a href="#u${u.n}-resuelto">U${u.n} · Resuelto</a>`).join("")}</div></div>`;
 }
 function sheetMore() {
   return `<div class="wrap"><div class="grab"></div><h3>Más</h3><div class="grid2">
@@ -1572,10 +1585,11 @@ function pageKey(h) {
   let m;
   if ((m = h.match(/^u(\d)(-|$)/))) return "u" + m[1];
   if ((m = h.match(/^casos(?:-([a-z]+))?/))) return "casos-" + (m[1] || "");
+  if ((m = h.match(/^aula-([a-z0-9]+)$/))) return "aula-" + m[1];
   for (const k of ["prompts", "herramientas", "llevas", "programa", "marco", "glosario", "diapositivas", "uso", "aula"]) if (h.startsWith(k)) return k;
   return "inicio";
 }
-const TITLES = { inicio: "Cuaderno · IA con perspectiva de género", prompts: "Banco de prompts", herramientas: "Herramientas", llevas: "Lo que te llevas", programa: "Programa", marco: "Marco normativo", glosario: "Glosario", diapositivas: "Diapositivas", uso: "Cómo usar el cuaderno", aula: "Dinámicas de la jornada" };
+const TITLES = { inicio: "Cuaderno · IA con perspectiva de género", prompts: "Banco de prompts", herramientas: "Herramientas", llevas: "Lo que te llevas", programa: "Programa", marco: "Marco normativo", glosario: "Glosario", diapositivas: "Diapositivas", uso: "Cómo usar el cuaderno", aula: "Prácticas de aula" };
 
 function route() {
   closeSheet();
@@ -1586,6 +1600,7 @@ function route() {
     if (key === "inicio") html = pageInicio();
     else if (key[0] === "u" && key.length === 2) html = pageUnit(+key[1]);
     else if (key.startsWith("casos-")) html = pageCasos(key.slice(6));
+    else if (key.startsWith("aula-")) html = pageAulaUna(key.slice(5));
     else html = ({ prompts: pagePrompts, herramientas: pageHerr, llevas: pageLlevas, programa: pagePrograma, marco: pageMarco, glosario: pageGlos, diapositivas: pageDiapos, uso: pageUso, aula: pageAula })[key]();
     main().innerHTML = html;
     curPage = key;
@@ -1595,10 +1610,11 @@ function route() {
   let t = TITLES[key];
   if (key[0] === "u" && key.length === 2) t = `Unidad ${key[1]} · ${unitById(+key[1]).title}`;
   if (key.startsWith("casos")) t = "Banco de casos";
+  if (key.startsWith("aula-")) { const a = AULA.find(x => "aula-" + x.id === key); t = a ? dname(a) : "Prácticas de aula"; }
   $("#ttl").textContent = t || "";
   // barra inferior activa
   $$(".bar [data-tab]").forEach(b => b.classList.remove("on"));
-  const tab = key === "inicio" ? "inicio" : key[0] === "u" && key.length === 2 ? "unidades" : key === "aula" ? "aula" : key === "prompts" ? "prompts" : "mas";
+  const tab = key === "inicio" ? "inicio" : key[0] === "u" && key.length === 2 ? "unidades" : key.startsWith("aula") ? "aula" : key === "prompts" ? "prompts" : "mas";
   const tb = $(`.bar [data-tab="${tab}"]`); if (tb) tb.classList.add("on");
   updateAreaChip();
   // desplazamiento
